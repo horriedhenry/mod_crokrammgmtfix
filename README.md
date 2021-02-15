@@ -1,4 +1,4 @@
-## Android RAM management fixes by crok
+## Android RAM management fixes by crok - Magisk 20.4+
 
 ## Activity Manager cached app number increaser + BService number increaser
 

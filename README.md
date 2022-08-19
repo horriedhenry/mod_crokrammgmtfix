@@ -63,7 +63,7 @@ ro.vendor.qti.sys.fw.bservice_limit=128
 These can be easily set via other tools or apps that support init.d scripts and build.prop editing but I use Magisk anyway.. so.. why not using it to do the job properly - with successful SafetyNet test    ( :
 
 
-*NOTE: If you are using MIUI ROM please disable MIUI optimization and MIUI memory optimization because it resets most of these settings. If you use any app that tweaks settings above please uninstall or at least disable them to run and ruin the module's settings.*
+*NOTE: If you are using MIUI ROM you may have to disable MIUI optimization and MIUI memory optimization because it resets most of these settings. If you use any app that tweaks settings above please uninstall or at least disable them to run and ruin the module's settings. Disabling MIUI opt. may cause permission and other kind of strange issues (like inability to attach files, etc). So.. I did tell you about it.*
 
 
 

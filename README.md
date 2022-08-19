@@ -36,11 +36,21 @@ echo '21816,29088,36360,43632,50904,65448' > /sys/module/lowmemorykiller/paramet
 rm /data/system/perfd/default_values
 start perfd
 sleep 20
+
 # Set Activity Manager's max. cached app number -> 160 (instead of the default 32 (or even lower 24):
+# https://gist.github.com/agnostic-apollo/dc7e47991c512755ff26bd2d31e72ca8
+## Android 9 and below:
 settings put global activity_manager_constants max_cached_processes=160
+## Android 10 and above:
+/system/bin/device_config put activity_manager max_phantom_processes 2147483647
+/system/bin/device_config put activity_manager max_cached_processes 160
+
+## Combined:
+[ $(getprop ro.build.version.release) -gt 9 ] && /system/bin/device_config put activity_manager max_phantom_processes 2147483647 ; /system/bin/device_config put activity_manager max_cached_processes 160 || settings put global activity_manager_constants max_cached_processes=160
+
 ```
 
-## Increasing ActivityManager's cached app number + number of BService processes
+## Android 9 and below: Increasing ActivityManager's cached app number + number of BService processes
 ```
 ro.sys.fw.bg_apps_limit=128
 ro.vendor.qti.sys.fw.bg_apps_limit=128

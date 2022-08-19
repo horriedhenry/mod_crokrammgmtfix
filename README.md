@@ -17,7 +17,7 @@ https://telegra.ph/Fine-tuning-an-Android-system-04-20
 
 ## Details
 
-## Virtual memory "tweaks"
+~~## Virtual memory "tweaks"  --  kind of obsolate since Android 10..~~
 ```
 # Virtual memory tweaks
 stop perfd
@@ -37,6 +37,11 @@ rm /data/system/perfd/default_values
 start perfd
 sleep 20
 
+```
+
+THIS is still quite handy though!
+
+```
 # Set Activity Manager's max. cached app number -> 160 (instead of the default 32 (or even lower 24):
 # https://gist.github.com/agnostic-apollo/dc7e47991c512755ff26bd2d31e72ca8
 ## Android 9 and below:
@@ -47,7 +52,6 @@ settings put global activity_manager_constants max_cached_processes=160
 
 ## Combined:
 [ $(getprop ro.build.version.release) -gt 9 ] && /system/bin/device_config put activity_manager max_phantom_processes 2147483647 ; /system/bin/device_config put activity_manager max_cached_processes 160 || settings put global activity_manager_constants max_cached_processes=160
-
 ```
 
 ## Android 9 and below: Increasing ActivityManager's cached app number + number of BService processes

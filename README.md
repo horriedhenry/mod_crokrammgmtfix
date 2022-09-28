@@ -17,6 +17,10 @@ https://telegra.ph/Fine-tuning-an-Android-system-04-20
 
 ## Details
 
+First of all: this is not a "classic" Magisk module.
+This is a set of commands to apply to modify the ActivityManager's behavior and disable MIUI PeriodicCleaner - but not systemless.. and not changing any files.. it is changing / adding system parameters when installed (and after reboot) and removes them when uninstalled.
+The values can be changed via ADB, too, so in case you want to apply the changes you can run the content of service.sh and in case you want to remove them you can run the content of uninstall.sh (Everything is [written here, too](https://logout.hu/bejegyzes/crok/android_activitymanager_am_es_memoriahasznalat_jav.html), it's hungarian but hope you get what the commands are doing - if you don't please don't go further!)
+
 ~~## Virtual memory "tweaks"  --  kind of obsolate since Android 10..~~
 ```
 # Virtual memory tweaks
@@ -40,6 +44,8 @@ sleep 20
 ```
 
 THIS is still quite handy though!
+https://gist.github.com/agnostic-apollo/dc7e47991c512755ff26bd2d31e72ca8
+Credits goes to https://github.com/agnostic-apollo/ and all who were involved.
 
 ```
 # Set Activity Manager's max. cached app number -> 160 (instead of the default 32 (or even lower 24):
@@ -55,6 +61,7 @@ settings put global activity_manager_constants max_cached_processes=160
 ```
 
 ## Android 9 and below: Increasing ActivityManager's cached app number + number of BService processes
+Obsolate - removed - in case you need them you can use MagiskHidePropsConfig to add them systemlessly (or simply add them to build.prop):
 ```
 ro.sys.fw.bg_apps_limit=128
 ro.vendor.qti.sys.fw.bg_apps_limit=128
